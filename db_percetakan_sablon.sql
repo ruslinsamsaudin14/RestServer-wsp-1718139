@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2020 at 02:14 PM
+-- Generation Time: Dec 17, 2020 at 04:29 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -25,6 +25,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `keys`
+--
+
+CREATE TABLE `keys` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `key` varchar(40) NOT NULL,
+  `level` int(2) NOT NULL,
+  `ignore_limits` tinyint(1) NOT NULL DEFAULT '0',
+  `is_private_key` tinyint(1) NOT NULL DEFAULT '0',
+  `ip_addresses` text,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `keys`
+--
+
+INSERT INTO `keys` (`id`, `user_id`, `key`, `level`, `ignore_limits`, `is_private_key`, `ip_addresses`, `date_created`) VALUES
+(1, 1, 'SABLON-12', 1, 1, 0, '1', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_barang`
 --
 
@@ -42,7 +66,6 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`id_barang`, `jenis_sablon_id`, `jenis_kaos`, `warna_kaos`, `jenis_sablon`, `harga`) VALUES
-(1, 1, 'Cotton Combed 20s', 'merah', 'Sablon Rubber', 75000),
 (2, 2, 'Cotton Combed 24s', 'biru', 'Sablon Plastisol ', 80000),
 (3, 3, 'Cotton Combed 30s', 'pink', 'Sablon DTG', 85000),
 (4, 4, 'Cotton Combed 40s', 'hijau', 'Sablon Flocking', 90000),
@@ -70,7 +93,6 @@ CREATE TABLE `tb_jenis_sablon` (
 --
 
 INSERT INTO `tb_jenis_sablon` (`id_jenis_sablon`, `nama_jenis_sablon`, `Keterangan`) VALUES
-(1, 'Sablon Rubber', 'sablon rubber yang memiliki tingkat lekatan yang baik pada bahan kaos, serta sifatnya yang elastis membuat sablon jenis ini sebagai salah satu jenis sablon terbaik, dan termasuk bahan tinta sablon yang termurah.'),
 (2, 'Sablon Plastisol', 'Sablon jenis plastisol akan memberikan efek warna cerah serta memiliki beragam pilihan warna tinta sehingga bisa disesuaikan dengan warna dasar kaos, dan bahkan telah menjadi sablon yang digunakan sebagai standar internasional, sablon jenis ini tidak tahan panas dalam artian sablon akan mudah mengelupas, sehingga jangan pernah setrika kaos yang menggunakan sablon jenis ini secara langsung di permukaannya, melainkan setrikalah bagian dalam dari kaos tersebut.'),
 (3, 'Sablon DTG', 'Sablon DTG sering juga disebut metode Print DTG karena untuk melakukan proses sablon ini harus menggunakan printer selayaknya melakukan print pada kertas. Karena menggunakan printer, tidak ada batasan warna untuk kaos yang akan dibuat, tidak seperti pada metode sablon yang lainnya.'),
 (4, 'Sablon Flocking', 'Jenis sablon yang satu ini akan menimbulkan efek bulu-bulu halus (flock) pada permukaannya seperti pada beludru, dan juga sablon ini tidak menggunakan tinta melainkan menggunakan serbuk atau bubuk pewarna.'),
@@ -84,6 +106,12 @@ INSERT INTO `tb_jenis_sablon` (`id_jenis_sablon`, `nama_jenis_sablon`, `Keterang
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `keys`
+--
+ALTER TABLE `keys`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_barang`
@@ -101,6 +129,12 @@ ALTER TABLE `tb_jenis_sablon`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `keys`
+--
+ALTER TABLE `keys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_barang`
